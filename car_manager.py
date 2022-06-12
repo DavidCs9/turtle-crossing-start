@@ -10,10 +10,11 @@ class CarManager:
     def __init__(self):
         self.all_Cars = []
         self.speed = STARTING_MOVE_DISTANCE
+
     def create_car(self):
         r = random.randint(1, 6)
         if r == 1:
-            new_car = Turtle('square')
+            new_car = Turtle("square")
             new_car.shapesize(1, 2)
             new_car.color(random.choice(COLORS))
             new_car.penup()
@@ -25,6 +26,13 @@ class CarManager:
         for car in self.all_Cars:
             car.backward(self.speed)
 
-
     def level_up(self):
-            self.speed += MOVE_INCREMENT
+        self.speed += MOVE_INCREMENT
+
+    def delete_cars(self):
+        for car in self.all_Cars:
+            car.hideturtle()
+
+        self.all_Cars = []
+
+        self.speed = STARTING_MOVE_DISTANCE
